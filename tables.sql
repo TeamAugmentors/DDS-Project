@@ -1,5 +1,6 @@
 --Created by Md Atiqur Rahman
 clear screen;
+set linesize 200;
 
 --delete existing table
 drop table vaccine_record cascade constraints;
@@ -31,6 +32,13 @@ cid integer,
 		--FOREIGN KEY(cid) REFERENCES vaccine_center(cid), 
 		--FOREIGN KEY(vid) REFERENCES vaccine_record(vid)
 );
+
+
+-----insert into users----------
+INSERT into users values(1, 'A', 'Dhaka', 1, 1);
+INSERT into users values(2, 'B', 'Dhaka', 2, 3);
+INSERT into users values(3, 'C', 'Sylhet', 3, 5);
+
 
 -----insert into vaccine_center----------
 INSERT into vaccine_center values(1,'Dhaka', 'Mohanagar Institute');
