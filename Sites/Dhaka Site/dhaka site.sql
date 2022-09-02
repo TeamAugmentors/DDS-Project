@@ -21,11 +21,11 @@ END register_user;
 
 CREATE OR REPLACE PROCEDURE display_user(nid IN users.nid%TYPE)
 IS 
-	cname vaccine_center.cname%TYPE;
-	city vaccine_center.city%TYPE;
-	brand vaccine_record.brand%TYPE;
+	cname vaccine_center@server.cname%TYPE;
+	city vaccine_center@server.city%TYPE;
+	brand vaccine_record@server.brand%TYPE;
 BEGIN
-	FOR R IN (SELECT NID, CNAME, CITY, BRAND FROM USERS U JOIN VACCINE_RECORD VR ON U.VID = VR.VID JOIN VACCINE_CENTER VC ON U.CID = VC.CID) LOOP
+	FOR R IN (SELECT NID, CNAME, CITY, BRAND FROM USERS U JOIN VACCINE_RECORD@server VR ON U.VID = VR.VID JOIN VACCINE_CENTER@server VC ON U.CID = VC.CID) LOOP
 		IF R.NID = nid THEN
 			DBMS_OUTPUT.PUT_LINE(R.CNAME ||', '|| R.CITY ||', '|| R.BRAND);
 		END IF;
@@ -48,20 +48,20 @@ DECLARE
 BEGIN
 	DBMS_OUTPUT.PUT_LINE('User created!');
 	
-	select COUNT(*) into cnt from vaccine_center where city = 'Dhaka';
+	select COUNT(*) into cnt from vaccine_center@server where city = 'Dhaka';
 	j := trunc(dbms_random.value(1, cnt + 1));
 
 	i:= 1;
-	FOR R IN (SELECT CID FROM VACCINE_CENTER WHERE city = 'Dhaka') LOOP
+	FOR R IN (SELECT CID FROM VACCINE_CENTER@server WHERE city = 'Dhaka') LOOP
 		random_center_no := R.CID;
 		EXIT WHEN i = j;
 		i := i+1;
 	END LOOP;
 	
-	select COUNT(*) into cnt from vaccine_record;
+	select COUNT(*) into cnt from vaccine_record@server;
 	
 	random_vaccine_no := trunc(dbms_random.value(1, cnt + 1));
-	--insert into users@server values(:new.nid, :new.name, 'Dhaka', random_vaccine_no_no, random_center_no)
+	--insert into users@server values(:new.nid, :new.name, 'Dhaka', random_vaccine_no, random_center_no);
 	
 END;
 /

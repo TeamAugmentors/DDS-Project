@@ -3,15 +3,16 @@ clear screen;
 set linesize 200;
 
 --delete existing table
-drop table vaccine_record cascade constraints;
-drop table vaccine_center cascade constraints;
-drop table users cascade constraints;
+drop table vaccine_record;
+drop table vaccine_center;
+drop table users;
 
 --Create vaccine, vaccine_record
 
 create table vaccine_record(
 vid integer,
 brand varchar2(30),
+amount integer,
         PRIMARY KEY (vid)
 );
 
@@ -34,12 +35,6 @@ cid integer,
 );
 
 
------insert into users----------
-INSERT into users values(1, 'A', 'Dhaka', 1, 1);
-INSERT into users values(2, 'B', 'Dhaka', 2, 3);
-INSERT into users values(3, 'C', 'Sylhet', 3, 5);
-
-
 -----insert into vaccine_center----------
 INSERT into vaccine_center values(1,'Dhaka', 'Mohanagar Institute');
 INSERT into vaccine_center values(2,'Dhaka', 'Jahangir Institute');
@@ -51,9 +46,9 @@ INSERT into vaccine_center values(6,'Sylhet', 'Sylhet Institute3');
 
 
 -----insert into vaccine_record----------
-INSERT into vaccine_record values(1, 'AstraZeneca');
-INSERT into vaccine_record values(2, 'Pfizer');
-INSERT into vaccine_record values(3, 'Sputnik V');
+INSERT into vaccine_record values(1, 'AstraZeneca', 20);
+INSERT into vaccine_record values(2, 'Pfizer', 20);
+INSERT into vaccine_record values(3, 'Sputnik V', 20);
 
 commit;
 
