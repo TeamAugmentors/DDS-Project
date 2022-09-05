@@ -1,7 +1,7 @@
 drop database link server_site;
 
 create database link server_site
- connect to system identified by "123"
+ connect to system identified by "123456"
  using '(DESCRIPTION =
        (ADDRESS_LIST =
          (ADDRESS = (PROTOCOL = TCP)

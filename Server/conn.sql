@@ -2,7 +2,7 @@
 drop database link dhaka_site;
 
 create database link dhaka_site
- connect to system identified by "123"
+ connect to system identified by "123456"
  using '(DESCRIPTION =
        (ADDRESS_LIST =
          (ADDRESS = (PROTOCOL = TCP)
@@ -20,7 +20,7 @@ create database link dhaka_site
 drop database link sylhet_site;
 
 create database link sylhet_site
- connect to system identified by "123"
+ connect to system identified by "123456"
  using '(DESCRIPTION =
        (ADDRESS_LIST =
          (ADDRESS = (PROTOCOL = TCP)
