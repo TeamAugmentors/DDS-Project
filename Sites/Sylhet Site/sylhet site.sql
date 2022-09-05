@@ -23,11 +23,11 @@ BEGIN
 		i := i+1;
 	END LOOP;
 	
-	select COUNT(*) into cnt from vaccine_center_storage;
+	select COUNT(*) into cnt from vaccine_center_storage where cid = random_center_no;
 	j := trunc(dbms_random.value(1, cnt + 1));
 	i:= 1;
 	--write a function for this later
-	FOR R IN (SELECT VID FROM vaccine_center_storage) LOOP
+	FOR R IN (SELECT VID FROM vaccine_center_storage where cid = random_center_no) LOOP
 		random_vaccine_no := R.VID;
 		EXIT WHEN i = j;
 		i := i+1;
